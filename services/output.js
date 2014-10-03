@@ -16,7 +16,7 @@ function outputData(collection, rows, total){
     if(collection[i]){
       out += collection[i].key + ' ' + collection[i].size + ' %' + (collection[i].size/total*100);
     }else{
-      out += 'NA';
+      out += 'N/A';
     }
       console.log(out);
   }
