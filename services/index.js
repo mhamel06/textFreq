@@ -1,3 +1,4 @@
 module.exports = {
-    uploadFile: require('./upload')
+    uploadFile: require('./upload'),
+    output: require('./output')
 }

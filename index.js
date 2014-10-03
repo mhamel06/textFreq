@@ -29,6 +29,7 @@ if ('development' == app.get('env')) {
 }
 
 app.post('/svc/uploadFile', services.uploadFile);
+app.post('/svc/output', services.output);
 
 
 app.listen(app.get('port'), function(){

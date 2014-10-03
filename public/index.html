@@ -6,30 +6,42 @@
         <!--<link rel="stylesheet" href="bower_components/bootstrap-sass/dist/css/bootstrap-theme.css">-->
     </head>
     <body ng-app="textFreq" ng-controller="textFreqCtrl">
-        <h4>Part one</h4>
-        <ol>
-            <li ng-repeat="text in sortedStringsOne | limitTo : 10" >
-                {{text.key}}: {{text.size}} %{{(text.size/totalWords)*100 | number : 2}}
-            </li>
-        </ol>
+        <input type='text' class='form-contro' placeholder='input text ex. the' ng-model="inputWord" ng-change='updateOrder()'>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h4>Part one</h4>
+                        <ol>
+                            <li ng-repeat="text in sortedStringsOne | limitTo : 10" >
+                                {{text.key}}: {{text.size}} %{{(text.size/totalWords)*100 | number : 2}}
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4>Part two</h4>
+                        <ol ng-show="inputWord">
+                            <li ng-repeat="text in sortedStringsTwo | limitTo : 10" >
+                                ({{inputWord}}) {{text.key}}: {{text.size}} %{{(text.size/totalWords)*100 | number : 2}}
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="hero-unit">
+                       <form action="/upload" after-load='loaded' class="dropzone" drop-zone id="file-dropzone"></form>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <h4>Part three</h4>
 
-        <h4>Part two</h4>
-        <ol ng-show="inputWord">
-            <li ng-repeat="text in sortedStrings | limitTo : 10" >
-                ({{inputWord}}) {{text.key}}: {{text.size}} %{{(text.size/totalWords)*100 | number : 2}}
-            </li>
-        </ol>
-        <h4>Part three</h4>
-
-        <ol ng-show="inputWord">
-            <li ng-repeat="text in sortedStringsThree | limitTo : 10" >
-                ({{inputWord}}) {{text.key}}: {{text.size}} %{{(text.size/totalWords)*100 | number : 2}}
-            </li>
-        </ol>
-        <input type='text' ng-model="inputWord" ng-change='updateOrder()'>
-        <div class="hero-unit">
-	           <form action="/upload" after-load='loaded' class="dropzone" drop-zone id="file-dropzone"></form>
+                <ol ng-show="inputWord">
+                    <li ng-repeat="text in sortedStringsThree | limitTo : 100" >
+                        {{text.key}}: {{text.size}} %{{(text.size/totalWords)*100 | number : 2}}
+                    </li>
+                </ol>
+            </div>
         </div>
+
 
     <script src="bower/jquery/dist/jquery.min.js"></script>
     <script src="bower/angular/angular.min.js"></script>
