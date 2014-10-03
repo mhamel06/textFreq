@@ -8,7 +8,7 @@
     <body ng-app="textFreq" ng-controller="textFreqCtrl">
         <input type='text' class='form-contro' placeholder='input text ex. the' ng-model="inputWord" ng-change='updateOrder()'>
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-md-8">
                 <div class="row">
                     <div class="col-lg-6">
                         <h4>Part one</h4>
@@ -31,7 +31,7 @@
                        <form action="/upload" after-load='loaded' class="dropzone" drop-zone id="file-dropzone"></form>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-md-4">
                 <h4>Part three</h4>
 
                 <ol ng-show="inputWord">
