@@ -22,7 +22,7 @@
                         <h4>Part two</h4>
                         <ol ng-show="inputWord">
                             <li ng-repeat="text in sortedStringsTwo | limitTo : 10" >
-                                ({{inputWord}}) {{text.key}}: {{text.size}} %{{(text.size/totalWords)*100 | number : 2}}
+                                ({{inputWord | uppercase}}) {{text.key}}: {{text.size}} %{{(text.size/totalWords)*100 | number : 2}}
                             </li>
                         </ol>
                     </div>

@@ -12,6 +12,9 @@ angular.module('textFreq', ['dropZone']).controller('textFreqCtrl', function($sc
 
         $scope.originalStrings = text.replace(/(\r\n|\n|\r)/gm,' ')
         .replace(/\.|,|'|"/gm, '').split(' ');
+        $scope.originalStrings = $scope.originalStrings.map(function(str){
+            return str.toUpperCase();
+        });
         $scope.totalWords = $scope.originalStrings.length;
         $scope.updateOrder();
         $scope.sortedStringsOne = angular.copy($scope.sortedStringsTwo);
@@ -30,7 +33,8 @@ angular.module('textFreq', ['dropZone']).controller('textFreqCtrl', function($sc
             if(!$scope.inputWord){
                 matched = true;
             }
-            if($scope.inputWord && (i-1 > 0) && $scope.inputWord === strings[i-1]){
+            if($scope.inputWord && (i-1 > 0) &&
+                 ($scope.inputWord.toUpperCase() === strings[i-1])){
                 matched = true;
             }
 
@@ -57,7 +61,7 @@ angular.module('textFreq', ['dropZone']).controller('textFreqCtrl', function($sc
         var strings = $scope.originalStrings;
         for(var x = 0; x < 10; x++){
             for(var i = 2; i < strings.length; i++){
-                if($scope.inputWord === strings[i-2] &&
+                if($scope.inputWord.toUpperCase() === strings[i-2] &&
                     $scope.sortedStringsTwo[x].key === strings[i-1]){
                         var key = strings[i-2] + " " + strings[i-1] + " " + strings[i];
                         if(stringHash[key]){
